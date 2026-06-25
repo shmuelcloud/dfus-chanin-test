@@ -743,6 +743,7 @@
 
         // Send email notification to shop owner
         emailjs.send('service_84430n4', 'template_awswyz8', {
+          to_email:       'hanin@hanin.co.il',
           customer_name:  name,
           customer_phone: phone,
           notes:          document.getElementById('u-notes').value.trim() || '—',
