@@ -557,6 +557,10 @@
           <input type="tel" id="u-phone" placeholder="050-0000000">
         </div>
         <div class="upload-field upload-field-full">
+          <label for="u-email">אימייל *</label>
+          <input type="email" id="u-email" placeholder="israel@example.com">
+        </div>
+        <div class="upload-field upload-field-full">
           <label for="u-notes">הערות (כמות, גודל, צדדים...)</label>
           <textarea id="u-notes" placeholder="לדוגמה: 500 עותקים, A4, צד אחד, ציפוי מט"></textarea>
         </div>
@@ -716,7 +720,8 @@
   function submitUpload() {
     var name  = document.getElementById('u-name').value.trim();
     var phone = document.getElementById('u-phone').value.trim();
-    if (!name || !phone) return setStatus('error','אנא מלאו שם וטלפון לפני שליחה');
+    var email = document.getElementById('u-email').value.trim();
+    if (!name || !phone || !email) return setStatus('error','אנא מלאו שם, טלפון ואימייל לפני שליחה');
     if (!selectedFile)   return setStatus('error','אנא בחרו קובץ להעלאה');
 
     // Upload to Uploadcare
@@ -746,6 +751,7 @@
           to_email:       'hanin@hanin.co.il',
           customer_name:  name,
           customer_phone: phone,
+          customer_email: email,
           notes:          document.getElementById('u-notes').value.trim() || '—',
           file_url:       fileUrl
         });
