@@ -40,6 +40,8 @@
 </script>
 
 <script src="https://cdn.uploadcare.com/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('P5sPc5m16piio5QlZ');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -738,9 +740,18 @@
       if (xhr.status === 200) {
         var res = JSON.parse(xhr.responseText);
         uploadedUUID = res.file;
+        var fileUrl = 'https://ucarecdn.com/' + uploadedUUID + '/' + selectedFile.name;
         setProgress(100);
-        setStatus('success',
-          '✓ הקובץ הועלה בהצלחה! נחזור אל ' + name + ' בהקדם לאישור ותיאום.');
+
+        // Send email notification to shop owner
+        emailjs.send('service_84430n4', 'template_3kflg1m', {
+          customer_name:  name,
+          customer_phone: phone,
+          notes:          document.getElementById('u-notes').value.trim() || '—',
+          file_url:       fileUrl
+        });
+
+        setStatus('success', '✓ הקובץ הועלה בהצלחה! נחזור אל ' + name + ' בהקדם לאישור ותיאום.');
         setTimeout(function(){ setProgress(null); }, 1500);
       } else {
         setProgress(null);
