@@ -39,7 +39,6 @@
 }
 </script>
 
-<script src="https://cdn.uploadcare.com/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init('P5sPc5m16piio5QlZ');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -611,7 +610,8 @@
 
 <script>
   /* ── File Upload Logic ── */
-  var UC_KEY = '147405eda1136e71c32e';
+  var CLD_CLOUD  = 'k7gqgzaq';
+  var CLD_PRESET = 'Hanin-Print';
   var ALLOWED_EXT = ['pdf','jpg','jpeg','png','tiff','tif','ai','eps','docx'];
   var MAX_SIZE = 52428800; // 50MB
   var MAGIC = {
@@ -726,12 +726,11 @@
     setProgress(10);
 
     var fd = new FormData();
-    fd.append('UPLOADCARE_PUB_KEY', UC_KEY);
-    fd.append('UPLOADCARE_STORE', '1');
     fd.append('file', selectedFile);
+    fd.append('upload_preset', CLD_PRESET);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST','https://upload.uploadcare.com/base/');
+    xhr.open('POST','https://api.cloudinary.com/v1_1/' + CLD_CLOUD + '/auto/upload');
     xhr.upload.onprogress = function(e){
       if (e.lengthComputable) setProgress(Math.round(e.loaded/e.total*90));
     };
@@ -739,8 +738,7 @@
       btn.disabled = false;
       if (xhr.status === 200) {
         var res = JSON.parse(xhr.responseText);
-        uploadedUUID = res.file;
-        var fileUrl = 'https://ucarecdn.com/' + uploadedUUID + '/' + selectedFile.name;
+        var fileUrl = res.secure_url;
         setProgress(100);
 
         // Send email notification to shop owner
