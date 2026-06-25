@@ -44,17 +44,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b1624;
-    --bg-2:#111e33;
-    --surface:rgba(255,255,255,.05);
-    --surface-2:rgba(255,255,255,.07);
-    --border:rgba(255,255,255,.09);
-    --text:#e4ddd0;
-    --muted:#7a8499;
-    --gold:#c8a55a;
-    --gold-l:#dfc078;
-    --steel:#4a7fa5;
-    --grad:linear-gradient(120deg,#c8a55a 0%,#dfc078 55%,#c8a55a 100%);
+    --bg:#f7f5f2;
+    --bg-2:#eef0f4;
+    --surface:rgba(255,255,255,.72);
+    --surface-2:rgba(255,255,255,.88);
+    --border:rgba(15,37,64,.10);
+    --text:#1a2433;
+    --muted:#6b7280;
+    --navy:#0f2540;
+    --red:#c8202f;
+    --grad:linear-gradient(120deg,#0f2540 0%,#c8202f 100%);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -69,12 +68,12 @@
 
   /* Animated gradient blobs background */
   .bg-fx{position:fixed;inset:0;z-index:-2;overflow:hidden;}
-  .blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.22;animation:float 22s ease-in-out infinite;}
-  .blob.b1{width:560px;height:560px;background:#1a3f70;top:-140px;right:-120px;}
-  .blob.b2{width:480px;height:480px;background:#c8a55a;top:35%;left:-160px;animation-delay:-7s;opacity:.14;}
-  .blob.b3{width:520px;height:520px;background:#1a4a70;bottom:-180px;right:22%;animation-delay:-14s;opacity:.18;}
+  .blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.12;animation:float 22s ease-in-out infinite;}
+  .blob.b1{width:560px;height:560px;background:#0f2540;top:-140px;right:-120px;}
+  .blob.b2{width:480px;height:480px;background:#c8202f;top:35%;left:-160px;animation-delay:-7s;opacity:.08;}
+  .blob.b3{width:520px;height:520px;background:#0f2540;bottom:-180px;right:22%;animation-delay:-14s;opacity:.10;}
   @keyframes float{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(40px,-50px) scale(1.1);}66%{transform:translate(-30px,30px) scale(.95);}}
-  .grid-overlay{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(ellipse at 50% 0%,#000 40%,transparent 80%);}
+  .grid-overlay{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(15,37,64,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(15,37,64,.04) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(ellipse at 50% 0%,#000 40%,transparent 80%);}
 
   /* Top bar */
   .topbar{
@@ -117,7 +116,7 @@
     background:var(--surface-2);border:1px solid var(--border);color:var(--muted);
     margin-bottom:26px;
   }
-  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px rgba(200,32,47,.5);}
   .hero h1{
     font-size:clamp(2.6rem,7vw,5rem);font-weight:900;line-height:1.1;letter-spacing:-1px;
     margin-bottom:22px;
@@ -130,8 +129,8 @@
     padding:15px 34px;border-radius:999px;font-weight:600;font-size:1rem;
     text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:none;
   }
-  .btn-primary{background:var(--grad);color:#0b1624;box-shadow:0 8px 26px rgba(200,165,90,.30);}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(200,165,90,.45);}
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 26px rgba(15,37,64,.25);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(200,32,47,.30);}
   .btn-ghost{background:var(--surface);color:var(--text);border:1px solid var(--border);backdrop-filter:blur(8px);}
   .btn-ghost:hover{transform:translateY(-3px);background:var(--surface-2);}
 
@@ -199,7 +198,7 @@
     box-shadow:0 6px 18px rgba(200,165,90,.28);
   }
   .map-card{border-radius:24px;overflow:hidden;border:1px solid var(--border);min-height:340px;}
-  .map-card iframe{display:block;width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.3) invert(.92) hue-rotate(180deg);}
+  .map-card iframe{display:block;width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.2);}
 
   footer{
     text-align:center;padding:40px 24px;color:var(--muted);font-size:.92rem;
@@ -279,44 +278,33 @@
 </header>
 
 <section class="hero">
+  <!-- pixel-art printer animation -->
+  <div class="printer-wrap">
+    <svg class="pixel-printer" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+      <g class="pp-paper">
+        <rect x="40" y="4" width="40" height="46" fill="#f0ead6"/>
+        <rect class="pp-line1" x="45" y="10" width="30" height="4" fill="#4a5568" opacity="0"/>
+        <rect class="pp-line2" x="45" y="18" width="22" height="4" fill="#4a5568" opacity="0"/>
+        <rect class="pp-line3" x="45" y="26" width="28" height="4" fill="#4a5568" opacity="0"/>
+      </g>
+      <rect x="36" y="42" width="48" height="6" fill="#0f2540"/>
+      <rect x="24" y="48" width="72" height="36" fill="#0f2540"/>
+      <rect x="36" y="48" width="48" height="6" fill="#071628"/>
+      <rect x="28" y="66" width="64" height="12" fill="#0a1e36"/>
+      <rect x="34" y="70" width="8" height="4" fill="#4ade80" class="pp-led"/>
+      <rect x="80" y="70" width="8" height="4" fill="#c8202f"/>
+      <rect x="28" y="84" width="14" height="6" fill="#0a1e36"/>
+      <rect x="78" y="84" width="14" height="6" fill="#0a1e36"/>
+      <rect x="24" y="48" width="72" height="2" fill="rgba(255,255,255,.10)"/>
+    </svg>
+  </div>
+
   <span class="pill"><span class="dot"></span> בית דפוס בתל אביב · מאז 1973</span>
   <h1>הדפסה <span class="grad">בעידן חדש</span><br>בלב תל אביב</h1>
   <p>כרטיסי ביקור, פנקסים, פליירים, חותמות גומי ועוד — איכות גבוהה, מחירים הוגנים וזמינות מהירה.</p>
   <div class="hero-buttons">
     <a href="#services" class="btn btn-primary">לשירותים ולמחירון ←</a>
     <a href="#contact" class="btn btn-ghost">צרו קשר</a>
-  </div>
-
-  <!-- pixel-art printer animation -->
-  <div class="printer-wrap">
-    <svg class="pixel-printer" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-      <!-- paper (animated, comes out through the slot) -->
-      <g class="pp-paper">
-        <rect x="40" y="4" width="40" height="46" fill="#f0ead6"/>
-        <!-- printed lines appear on paper -->
-        <rect class="pp-line1" x="45" y="10" width="30" height="4" fill="#4a5568" opacity="0"/>
-        <rect class="pp-line2" x="45" y="18" width="22" height="4" fill="#4a5568" opacity="0"/>
-        <rect class="pp-line3" x="45" y="26" width="28" height="4" fill="#4a5568" opacity="0"/>
-      </g>
-      <!-- printer body (on top so paper slides behind slot) -->
-      <!-- feeder tray top -->
-      <rect x="36" y="42" width="48" height="6" fill="#1c3554"/>
-      <!-- main body -->
-      <rect x="24" y="48" width="72" height="36" fill="#1c3554"/>
-      <!-- paper slot (darker gap in body) -->
-      <rect x="36" y="48" width="48" height="6" fill="#0a1828"/>
-      <!-- front recessed panel -->
-      <rect x="28" y="66" width="64" height="12" fill="#162d4a" rx="0"/>
-      <!-- LED indicator -->
-      <rect x="34" y="70" width="8" height="4" fill="#4ade80" class="pp-led"/>
-      <!-- button -->
-      <rect x="80" y="70" width="8" height="4" fill="#0f2236"/>
-      <!-- feet -->
-      <rect x="28" y="84" width="14" height="6" fill="#162d4a"/>
-      <rect x="78" y="84" width="14" height="6" fill="#162d4a"/>
-      <!-- subtle highlight on top edge -->
-      <rect x="24" y="48" width="72" height="2" fill="rgba(255,255,255,.08)"/>
-    </svg>
   </div>
 </section>
 
