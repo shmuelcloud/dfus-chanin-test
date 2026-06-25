@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>[TEST] דפוס חנין | סביבת בדיקות</title>
+<meta name="description" content="דפוס חנין — בית דפוס בלב תל אביב מאז 1973. הדפסת כרטיסי ביקור, פנקסים, פליירים, גלויות, חותמות גומי, מדבקות, חוברות, ספרים ומעטפות. איכות גבוהה, מחירים הוגנים ומשלוח לכל חלקי הארץ.">
+<meta name="keywords" content="דפוס תל אביב, בית דפוס, הדפסת כרטיסי ביקור, פנקסים, פליירים, חותמות גומי, דפוס חנין">
+<link rel="canonical" href="https://www.hanin.co.il/">
+<meta name="geo.region" content="IL-TA">
+<meta name="geo.placename" content="תל אביב">
+
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="דפוס חנין | בית דפוס בתל אביב">
+<meta property="og:description" content="הדפסה מקצועית בלב תל אביב מאז 1973 — כרטיסי ביקור, פנקסים, פליירים, חותמות גומי ועוד. משלוח לכל חלקי הארץ.">
+<meta property="og:locale" content="he_IL">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PrintingService",
+  "name": "דפוס חנין",
+  "description": "בית דפוס בלב תל אביב מאז 1973 — הדפסת כרטיסי ביקור, פנקסים, פליירים, גלויות, חותמות גומי, מדבקות, חוברות, ספרים ומעטפות.",
+  "telephone": "+972-54-4944844",
+  "foundingDate": "1973",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "אחד העם 8",
+    "addressLocality": "תל אביב",
+    "addressCountry": "IL"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "opens": "09:00",
+    "closes": "14:00"
+  },
+  "areaServed": "IL"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2540;
+    --red:#c8202f;
+    --bg:#ffffff;
+    --bg-alt:#f6f7f9;
+    --text:#2b2f36;
+    --muted:#6b7280;
+    --border:#e6e8eb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Heebo', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+  }
+
+  /* Top bar */
+  .topbar{
+    background:var(--navy);
+    color:#cdd6e0;
+    font-size:.85rem;
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    padding:8px 20px;
+  }
+  .topbar span{display:flex;align-items:center;gap:6px;}
+
+  /* Header / nav */
+  header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  .nav-wrap{
+    max-width:1180px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    padding:16px 24px;
+  }
+  .logo{
+    font-size:1.6rem;
+    font-weight:900;
+    color:var(--navy);
+    letter-spacing:.5px;
+  }
+  .logo span{color:var(--red);}
+  nav.main-nav{
+    display:flex;
+    gap:30px;
+  }
+  nav.main-nav a{
+    color:var(--text);
+    text-decoration:none;
+    font-weight:600;
+    font-size:1rem;
+    transition:color .2s;
+  }
+  nav.main-nav a:hover{color:var(--red);}
+  .nav-cta{
+    background:var(--red);
+    color:#fff;
+    padding:10px 22px;
+    border-radius:6px;
+    font-weight:700;
+    text-decoration:none;
+    font-size:.95rem;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:#a8192a;}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(135deg, var(--navy) 0%, #1a3a60 100%);
+    color:#fff;
+    padding:50px 24px;
+    text-align:center;
+    min-height:38vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero h1{
+    font-size:3rem;
+    font-weight:900;
+    margin-bottom:18px;
+    line-height:1.3;
+  }
+  .hero h1 em{
+    color:var(--red);
+    font-style:normal;
+  }
+  .hero p{
+    font-size:1.2rem;
+    color:#d7dee6;
+    max-width:640px;
+    margin:0 auto 32px;
+    font-weight:300;
+  }
+  .hero-buttons{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:14px 32px;
+    border-radius:6px;
+    font-weight:700;
+    text-decoration:none;
+    font-size:1rem;
+    transition:all .2s;
+  }
+  .btn-primary{
+    background:var(--red);
+    color:#fff;
+  }
+  .btn-primary:hover{background:#a8192a;}
+  .btn-secondary{
+    background:transparent;
+    color:#fff;
+    border:2px solid rgba(255,255,255,.5);
+  }
+  .btn-secondary:hover{border-color:#fff;}
+
+  /* Sections */
+  section{
+    max-width:1180px;
+    margin:0 auto;
+    padding:80px 24px;
+    scroll-margin-top:90px;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom:50px;
+  }
+  .section-head .tag{
+    color:var(--red);
+    font-weight:700;
+    letter-spacing:1px;
+    font-size:.85rem;
+    text-transform:uppercase;
+  }
+  .section-head h2{
+    font-size:2.2rem;
+    font-weight:900;
+    color:var(--navy);
+    margin-top:8px;
+  }
+  .section-head p{
+    color:var(--muted);
+    max-width:600px;
+    margin:14px auto 0;
+  }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:50px;
+    align-items:center;
+  }
+  .about-text p{
+    color:var(--muted);
+    font-size:1.05rem;
+    margin-bottom:16px;
+  }
+  .about-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  .stat-box{
+    background:var(--bg-alt);
+    border-radius:10px;
+    padding:26px 20px;
+    text-align:center;
+    border:1px solid var(--border);
+  }
+  .stat-box .num{
+    font-size:2rem;
+    font-weight:900;
+    color:var(--red);
+  }
+  .stat-box .lbl{
+    color:var(--muted);
+    font-size:.9rem;
+    margin-top:4px;
+  }
+
+  /* Services */
+  .services-bg{
+    background:var(--bg-alt);
+  }
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:26px;
+  }
+  .service-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:30px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 24px rgba(15,37,64,.08);
+  }
+  .service-card .icon{
+    width:46px;height:46px;
+    background:linear-gradient(135deg, var(--red), #e0394a);
+    border-radius:10px;
+    margin-bottom:16px;
+  }
+  .service-card h3{
+    font-size:1.25rem;
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:6px;
+  }
+  .service-card .sub{
+    color:var(--muted);
+    font-size:.9rem;
+    margin-bottom:16px;
+  }
+  .service-card ul{
+    list-style:none;
+  }
+  .service-card li{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    border-bottom:1px solid var(--border);
+    font-size:.95rem;
+  }
+  .service-card li:last-child{border-bottom:none;}
+  .service-card li b{color:var(--navy);font-weight:700;}
+
+  .price-note{
+    margin-top:36px;
+    text-align:center;
+    background:var(--navy);
+    color:#fff;
+    border-radius:10px;
+    padding:16px;
+    font-weight:700;
+    letter-spacing:.3px;
+  }
+
+  /* Contact */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .contact-card{
+    background:var(--navy);
+    color:#fff;
+    border-radius:14px;
+    padding:44px;
+  }
+  .contact-card h3{
+    font-size:1.5rem;
+    font-weight:800;
+    margin-bottom:24px;
+  }
+  .contact-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+    font-size:1.05rem;
+  }
+  .contact-row .ico{
+    width:38px;height:38px;
+    background:var(--red);
+    border-radius:8px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.1rem;
+  }
+  .map-card{
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .map-card iframe{
+    display:block;
+    width:100%;
+    height:100%;
+    min-height:320px;
+    border:0;
+  }
+
+  footer{
+    background:var(--navy);
+    color:#9aa7b5;
+    text-align:center;
+    padding:28px;
+    font-size:.9rem;
+    border-top:4px solid var(--red);
+  }
+
+  @media (max-width:850px){
+    .about-grid, .services-grid, .contact-grid{grid-template-columns:1fr;}
+    nav.main-nav{display:none;}
+    .hero h1{font-size:2.1rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>📍 תל אביב, אחד העם 8</span>
+  <span>📱 054-4944844</span>
+  <span>🕒 9:00–14:00</span>
+</div>
+
+<header>
+  <div class="nav-wrap">
+    <nav class="main-nav">
+      <a href="#about">אודות</a>
+      <a href="#services">שירותים</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+    <a href="#contact" class="nav-cta" id="ctaBtn">קבלו הצעת מחיר</a>
+  </div>
+</header>
+
+<section class="hero" style="max-width:none;">
+  <h1>דפוס <em>חנין</em><br>בלב תל אביב</h1>
+  <div class="hero-buttons">
+    <a href="#services" class="btn btn-primary">לשירותים ולמחירון</a>
+    <a href="#contact" class="btn btn-secondary">צרו קשר</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="tag">מי אנחנו</div>
+      <h2 style="font-size:2rem;font-weight:900;color:var(--navy);margin:10px 0 18px;">דפוס חנין — איכות ומסירות מאז 1973</h2>
+      <p>
+        דפוס חנין הוא בית דפוס הממוקם בלב תל אביב, ברחוב אחד העם 8, ופועל באזור מאז 1973.
+        אנו מתמחים בהדפסת כרטיסי ביקור, פנקסים, פליירים, גלויות, חותמות גומי,
+        מדבקות, חוברות, ספרים ומעטפות — בזמינות גבוהה, איכות מצוינת ומחירים תחרותיים.
+      </p>
+      <p>
+        אנחנו מאמינים בשירות אישי, עמידה בזמנים ותוצר מקצועי שמדבר בעד עצמו —
+        בין אם אתם צריכים כרטיס ביקור אחד או הזמנה גדולה לעסק.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box"><div class="num">100%</div><div class="lbl">איכות הדפסה</div></div>
+      <div class="stat-box"><div class="num">5★</div><div class="lbl">שירות אישי</div></div>
+      <div class="stat-box"><div class="num">שירות מהיר</div></div>
+      <div class="stat-box"><div class="num">₪</div><div class="lbl">מחירים הוגנים</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services-bg">
+  <div class="section-head">
+    <div class="tag">המחירון שלנו</div>
+    <h2>שירותים ומחירים</h2>
+    <p>כל המחירים המפורטים אינם כוללים מע״מ</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>כרטיסי ביקור</h3>
+      <div class="sub">לא כולל עריכה גרפית — מקובץ מוכן</div>
+      <ul>
+        <li><span>200 כרטיסים, צד אחד</span><b>140 ש״ח</b></li>
+        <li><span>500 כרטיסים, צד אחד</span><b>220 ש״ח</b></li>
+        <li><span>1000 כרטיסים, צד אחד</span><b>320 ש״ח</b></li>
+        <li><span>תוספת לצד שני (לכל הכמויות)</span><b>30 ש״ח</b></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>פנקסים (חשבוניות וכו׳)</h3>
+      <div class="sub">מקור + 2 העתקים, 25 סטים בפנקס</div>
+      <ul>
+        <li><span>2 פנקסים</span><b>124 ש״ח</b></li>
+        <li><span>4 פנקסים</span><b>155 ש״ח</b></li>
+        <li><span>6 פנקסים</span><b>185 ש״ח</b></li>
+        <li><span>10 פנקסים</span><b>240 ש״ח</b></li>
+        <li><span>20 פנקסים</span><b>390 ש״ח</b></li>
+        <li><span>6 בדף, פנקס ראשון / נוסף</span><b>162 / 27 ש״ח</b></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>פליירים</h3>
+      <div class="sub">A4 / A5, צד אחד או משני צדדים</div>
+      <ul>
+        <li><span>100 פליירים A4, צד אחד</span><b>158 ש״ח</b></li>
+        <li><span>כל 100 נוספים A4, צד אחד / 2 צדדים</span><b>72 / 108 ש״ח</b></li>
+        <li><span>100 פליירים A5, צד אחד</span><b>110 ש״ח</b></li>
+        <li><span>כל 100 נוספים A5</span><b>35 ש״ח</b></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>גלויות (15/10 ס״מ)</h3>
+      <div class="sub">צד אחד או משני צדדים</div>
+      <ul>
+        <li><span>100 גלויות, צד אחד</span><b>120 ש״ח</b></li>
+        <li><span>תוספת לצד שני</span><b>10 ש״ח</b></li>
+        <li><span>כל 100 נוספות</span><b>35 ש״ח</b></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>חותמות גומי</h3>
+      <div class="sub">לפי שטח החתמה</div>
+      <ul>
+        <li><span>P-20 — 14/38 מ״מ</span><b>70 ש״ח</b></li>
+        <li><span>P-30 — 18/47 מ״מ</span><b>80 ש״ח</b></li>
+        <li><span>P-40 — 23/59 מ״מ</span><b>100 ש״ח</b></li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>ועוד מגוון שירותים</h3>
+      <div class="sub">לפרטים ולהצעת מחיר — צרו קשר</div>
+      <ul>
+        <li><span>מדבקות</span><b>לפי הזמנה</b></li>
+        <li><span>חוברות</span><b>לפי הזמנה</b></li>
+        <li><span>ספרים</span><b>לפי הזמנה</b></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="price-note">כל המחירים המפורטים לעיל אינם כוללים מע״מ</div>
+</section>
+
+<section id="contact">
+  <div class="section-head">
+    <div class="tag">דברו איתנו</div>
+    <h2>צור קשר</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>פרטי התקשרות</h3>
+      <div class="contact-row"><span class="ico">📍</span> דפוס חנין — תל אביב, אחד העם 8</div>
+      <div class="contact-row"><span class="ico">📱</span> נייד: 054-4944844</div>
+      <div class="contact-row"><span class="ico">🕒</span> שעות פעילות: 9:00–14:00</div>
+      <div class="contact-row"><span class="ico">🚚</span> משלוחים לכל חלקי הארץ</div>
+    </div>
+    <div class="map-card">
+      <iframe
+        title="מפת הגעה - דפוס חנין, אחד העם 8 תל אביב"
+        src="https://maps.google.com/maps?q=%D7%90%D7%97%D7%93%20%D7%94%D7%A2%D7%9D%208%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91&z=16&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © דפוס חנין — כל הזכויות שמורות
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  var cta = document.getElementById('ctaBtn');
+  var contact = document.getElementById('contact');
+  if(cta && contact){
+    var quoteText = 'קבלו הצעת מחיר';
+    var topText = 'חזרה למעלה <span aria-hidden="true">↑</span>';
+    cta.addEventListener('click', function(e){
+      if(cta.dataset.mode === 'top'){
+        e.preventDefault();
+        window.scrollTo({top:0, behavior:'smooth'});
+      }
+    });
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          cta.dataset.mode = 'top';
+          cta.innerHTML = topText;
+          cta.setAttribute('href', '#');
+        } else {
+          cta.dataset.mode = 'quote';
+          cta.textContent = quoteText;
+          cta.setAttribute('href', '#contact');
+        }
+      });
+    }, {threshold:0.35});
+    obs.observe(contact);
+  }
+</script>
+
+</body>
+</html>
