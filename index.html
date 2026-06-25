@@ -39,6 +39,7 @@
 }
 </script>
 
+<script src="https://cdn.uploadcare.com/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -229,6 +230,65 @@
   }
   @keyframes pp-blink{0%,49%{fill:#4ade80;}50%,100%{fill:#c8202f;}}
 
+  /* Upload section */
+  .upload-wrap{max-width:780px;margin:0 auto;}
+  .upload-card{padding:42px;}
+  .drop-zone{
+    border:2px dashed var(--border);border-radius:14px;
+    padding:44px 20px;text-align:center;cursor:pointer;
+    background:var(--bg-2);transition:border-color .2s,background .2s;
+    margin-bottom:24px;position:relative;
+  }
+  .drop-zone.drag-over,.drop-zone:hover{border-color:var(--navy);background:#eef2f7;}
+  .drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+  .drop-icon{font-size:2.8rem;margin-bottom:10px;}
+  .drop-zone h3{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .drop-zone p{color:var(--muted);font-size:.88rem;}
+  .drop-types{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:14px;}
+  .drop-tag{padding:3px 10px;border-radius:999px;font-size:.76rem;font-weight:700;
+    background:rgba(15,37,64,.07);color:var(--navy);border:1px solid rgba(15,37,64,.12);}
+  .file-preview{
+    display:none;align-items:center;gap:14px;padding:14px 18px;
+    border-radius:10px;background:#f0f4f8;border:1px solid var(--border);margin-bottom:20px;
+  }
+  .file-preview.show{display:flex;}
+  .file-preview .file-icon{font-size:2rem;}
+  .file-preview .file-info{flex:1;text-align:right;}
+  .file-preview .file-name{font-weight:700;color:var(--navy);font-size:.95rem;word-break:break-all;}
+  .file-preview .file-size{color:var(--muted);font-size:.82rem;}
+  .file-preview .file-remove{cursor:pointer;color:var(--red);font-size:1.3rem;font-weight:700;flex-shrink:0;}
+  .upload-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;}
+  .upload-field-full{grid-column:1/-1;}
+  .upload-field label{display:block;font-size:.86rem;font-weight:700;color:var(--navy);margin-bottom:5px;}
+  .upload-field input,.upload-field textarea,.upload-field select{
+    width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;
+    font-family:inherit;font-size:.95rem;color:var(--text);background:#fff;
+    outline:none;transition:border-color .2s;
+  }
+  .upload-field input:focus,.upload-field textarea:focus{border-color:var(--navy);}
+  .upload-field textarea{resize:vertical;min-height:76px;}
+  .upload-submit{width:100%;justify-content:center;margin-top:4px;font-size:1.05rem;padding:15px;}
+  .upload-progress{
+    display:none;margin-top:16px;height:6px;border-radius:999px;
+    background:var(--border);overflow:hidden;
+  }
+  .upload-progress.show{display:block;}
+  .upload-progress-bar{height:100%;width:0%;background:var(--navy);transition:width .3s;border-radius:999px;}
+  .upload-status{
+    display:none;margin-top:14px;padding:14px 18px;border-radius:10px;
+    font-weight:600;text-align:center;font-size:.95rem;
+  }
+  .upload-status.show{display:block;}
+  .upload-status.success{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;}
+  .upload-status.error{background:#fff1f2;color:#be123c;border:1px solid #fecdd3;}
+  .upload-status.loading{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;}
+  .security-row{
+    display:flex;gap:20px;flex-wrap:wrap;justify-content:center;
+    margin-top:22px;padding-top:18px;border-top:1px solid var(--border);
+  }
+  .sec-badge{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted);}
+  .sec-badge .dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;}
+
   /* Scroll reveal */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
@@ -263,6 +323,7 @@
     <nav class="main-nav">
       <a href="#about">אודות</a>
       <a href="#services">שירותים</a>
+      <a href="#upload">העלאת קבצים</a>
       <a href="#contact">צור קשר</a>
     </nav>
     <a href="#contact" class="nav-cta" id="ctaBtn">קבלו הצעת מחיר</a>
@@ -451,6 +512,73 @@
   <div class="price-note reveal">כל המחירים המפורטים לעיל אינם כוללים מע״מ</div>
 </section>
 
+<section id="upload">
+  <div class="section-head reveal">
+    <span class="tag">שירות עצמי</span>
+    <h2>העלאת קבצים להדפסה</h2>
+    <p>העלו את הקובץ שלכם ישירות — נחזור אליכם לאישור ותיאום תוך יום עסקים</p>
+  </div>
+  <div class="upload-wrap">
+    <div class="upload-card glass reveal">
+
+      <!-- Drop zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png,.tiff,.tif,.ai,.eps,.docx">
+        <div class="drop-icon">📂</div>
+        <h3>גררו קובץ לכאן או לחצו לבחירה</h3>
+        <p>PDF, JPG, PNG, TIFF, AI, EPS, DOCX — עד 50MB</p>
+        <div class="drop-types">
+          <span class="drop-tag">PDF</span><span class="drop-tag">JPG</span>
+          <span class="drop-tag">PNG</span><span class="drop-tag">TIFF</span>
+          <span class="drop-tag">AI</span><span class="drop-tag">EPS</span>
+          <span class="drop-tag">DOCX</span>
+        </div>
+      </div>
+
+      <!-- File preview after selection -->
+      <div class="file-preview" id="filePreview">
+        <span class="file-icon" id="fileIcon">📄</span>
+        <div class="file-info">
+          <div class="file-name" id="fileName"></div>
+          <div class="file-size" id="fileSize"></div>
+        </div>
+        <span class="file-remove" id="fileRemove" title="הסר קובץ">✕</span>
+      </div>
+
+      <!-- Customer details -->
+      <div class="upload-fields">
+        <div class="upload-field">
+          <label for="u-name">שם מלא *</label>
+          <input type="text" id="u-name" placeholder="ישראל ישראלי">
+        </div>
+        <div class="upload-field">
+          <label for="u-phone">טלפון *</label>
+          <input type="tel" id="u-phone" placeholder="050-0000000">
+        </div>
+        <div class="upload-field upload-field-full">
+          <label for="u-notes">הערות (כמות, גודל, צדדים...)</label>
+          <textarea id="u-notes" placeholder="לדוגמה: 500 עותקים, A4, צד אחד, ציפוי מט"></textarea>
+        </div>
+      </div>
+
+      <button class="btn btn-primary upload-submit" id="uploadBtn" onclick="submitUpload()">
+        שלחו לדפוס ←
+      </button>
+
+      <div class="upload-progress" id="uploadProgress">
+        <div class="upload-progress-bar" id="progressBar"></div>
+      </div>
+      <div class="upload-status" id="uploadStatus"></div>
+
+      <div class="security-row">
+        <span class="sec-badge"><span class="dot"></span> בדיקת תוכן אוטומטית</span>
+        <span class="sec-badge"><span class="dot"></span> קבצים מוצפנים בהעברה</span>
+        <span class="sec-badge"><span class="dot"></span> מחיקה אוטומטית לאחר הדפסה</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="section-head reveal">
     <span class="tag">דברו איתנו</span>
@@ -480,6 +608,152 @@
 </footer>
 
 <script>
+  /* ── File Upload Logic ── */
+  var UC_KEY = '147405eda1136e71c32e';
+  var ALLOWED_EXT = ['pdf','jpg','jpeg','png','tiff','tif','ai','eps','docx'];
+  var MAX_SIZE = 52428800; // 50MB
+  var MAGIC = {
+    pdf:   [0x25,0x50,0x44,0x46],       // %PDF
+    jpg:   [0xFF,0xD8,0xFF],
+    png:   [0x89,0x50,0x4E,0x47],
+    tiff1: [0x49,0x49,0x2A,0x00],       // little-endian TIFF
+    tiff2: [0x4D,0x4D,0x00,0x2A],       // big-endian TIFF
+    docx:  [0x50,0x4B,0x03,0x04],       // ZIP (DOCX/AI)
+    ps:    [0x25,0x21]                   // %! PostScript (EPS/AI)
+  };
+  var EXT_ICONS = {pdf:'📕',jpg:'🖼️',jpeg:'🖼️',png:'🖼️',tiff:'🖼️',tif:'🖼️',
+                   ai:'🎨',eps:'🎨',docx:'📝'};
+
+  var selectedFile = null;
+  var uploadedUUID = null;
+
+  function matchBytes(arr, sig) {
+    for (var i=0;i<sig.length;i++) if(arr[i]!==sig[i]) return false;
+    return true;
+  }
+
+  function fmtSize(b) {
+    return b>1048576 ? (b/1048576).toFixed(1)+' MB' : Math.round(b/1024)+' KB';
+  }
+
+  function setStatus(type, msg) {
+    var el = document.getElementById('uploadStatus');
+    el.textContent = msg;
+    el.className = 'upload-status show ' + type;
+  }
+
+  function setProgress(pct) {
+    var prog = document.getElementById('uploadProgress');
+    var bar  = document.getElementById('progressBar');
+    if (pct === null) { prog.className='upload-progress'; return; }
+    prog.className = 'upload-progress show';
+    bar.style.width = pct + '%';
+  }
+
+  function showFilePreview(file) {
+    var ext = file.name.split('.').pop().toLowerCase();
+    document.getElementById('fileIcon').textContent = EXT_ICONS[ext] || '📄';
+    document.getElementById('fileName').textContent = file.name;
+    document.getElementById('fileSize').textContent = fmtSize(file.size);
+    document.getElementById('filePreview').className = 'file-preview show';
+    document.getElementById('dropZone').style.display = 'none';
+    document.getElementById('uploadStatus').className = 'upload-status';
+    setProgress(null);
+  }
+
+  function clearFile() {
+    selectedFile = null; uploadedUUID = null;
+    document.getElementById('fileInput').value = '';
+    document.getElementById('filePreview').className = 'file-preview';
+    document.getElementById('dropZone').style.display = '';
+    document.getElementById('uploadStatus').className = 'upload-status';
+    setProgress(null);
+  }
+
+  function validateAndSet(file) {
+    var ext = file.name.split('.').pop().toLowerCase();
+    if (ALLOWED_EXT.indexOf(ext) === -1)
+      return setStatus('error','סוג קובץ לא מורשה. מותרים: PDF, JPG, PNG, TIFF, AI, EPS, DOCX');
+    if (file.size > MAX_SIZE)
+      return setStatus('error','הקובץ גדול מדי — המקסימום הוא 50MB');
+
+    // Magic bytes check — read first 8 bytes
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var a = new Uint8Array(e.target.result);
+      var ok = matchBytes(a,MAGIC.pdf)  || matchBytes(a,MAGIC.jpg)   ||
+               matchBytes(a,MAGIC.png)  || matchBytes(a,MAGIC.tiff1) ||
+               matchBytes(a,MAGIC.tiff2)|| matchBytes(a,MAGIC.docx)  ||
+               matchBytes(a,MAGIC.ps);
+      if (!ok) return setStatus('error','תוכן הקובץ אינו תואם לסוג שצוין — אנא ודאו שהקובץ תקין');
+      selectedFile = file;
+      showFilePreview(file);
+    };
+    reader.readAsArrayBuffer(file.slice(0,8));
+  }
+
+  // File input change
+  document.getElementById('fileInput').addEventListener('change', function(e){
+    if (e.target.files[0]) validateAndSet(e.target.files[0]);
+  });
+
+  // Remove file
+  document.getElementById('fileRemove').addEventListener('click', function(e){
+    e.stopPropagation(); clearFile();
+  });
+
+  // Drag & drop
+  var dz = document.getElementById('dropZone');
+  dz.addEventListener('dragover',  function(e){ e.preventDefault(); dz.classList.add('drag-over'); });
+  dz.addEventListener('dragleave', function(){ dz.classList.remove('drag-over'); });
+  dz.addEventListener('drop', function(e){
+    e.preventDefault(); dz.classList.remove('drag-over');
+    if (e.dataTransfer.files[0]) validateAndSet(e.dataTransfer.files[0]);
+  });
+
+  function submitUpload() {
+    var name  = document.getElementById('u-name').value.trim();
+    var phone = document.getElementById('u-phone').value.trim();
+    if (!name || !phone) return setStatus('error','אנא מלאו שם וטלפון לפני שליחה');
+    if (!selectedFile)   return setStatus('error','אנא בחרו קובץ להעלאה');
+
+    // Upload to Uploadcare
+    var btn = document.getElementById('uploadBtn');
+    btn.disabled = true;
+    setStatus('loading','⏳ מעלה קובץ... אנא המתינו');
+    setProgress(10);
+
+    var fd = new FormData();
+    fd.append('UPLOADCARE_PUB_KEY', UC_KEY);
+    fd.append('UPLOADCARE_STORE', '1');
+    fd.append('file', selectedFile);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST','https://upload.uploadcare.com/base/');
+    xhr.upload.onprogress = function(e){
+      if (e.lengthComputable) setProgress(Math.round(e.loaded/e.total*90));
+    };
+    xhr.onload = function(){
+      btn.disabled = false;
+      if (xhr.status === 200) {
+        var res = JSON.parse(xhr.responseText);
+        uploadedUUID = res.file;
+        setProgress(100);
+        setStatus('success',
+          '✓ הקובץ הועלה בהצלחה! נחזור אל ' + name + ' בהקדם לאישור ותיאום.');
+        setTimeout(function(){ setProgress(null); }, 1500);
+      } else {
+        setProgress(null);
+        setStatus('error','שגיאה בהעלאה — אנא נסו שוב או צרו קשר בטלפון');
+      }
+    };
+    xhr.onerror = function(){
+      btn.disabled = false; setProgress(null);
+      setStatus('error','שגיאת רשת — אנא בדקו את החיבור ונסו שוב');
+    };
+    xhr.send(fd);
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(function(link){
     link.addEventListener('click', function(e){
       var id = link.getAttribute('href').slice(1);
