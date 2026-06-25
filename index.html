@@ -208,36 +208,26 @@
   }
   footer .logo{font-size:1.3rem;margin-bottom:8px;}
 
-  /* Pixel printer animation */
-  .printer-wrap{
-    display:flex;justify-content:center;margin:40px auto 0;
-  }
-  .pixel-printer{width:120px;height:100px;}
+  /* Printing press animation */
+  .printer-wrap{display:flex;justify-content:center;margin:36px auto 0;}
+  .pixel-printer{width:240px;height:120px;}
 
-  .pp-paper{
-    animation:pp-feed 2.8s steps(16,end) infinite;
-    transform-origin:bottom center;
-  }
-  .pp-line1{animation:pp-line 2.8s steps(1,end) infinite;}
-  .pp-line2{animation:pp-line 2.8s steps(1,end) infinite;animation-delay:.7s;}
-  .pp-line3{animation:pp-line 2.8s steps(1,end) infinite;animation-delay:1.4s;}
-  .pp-led{animation:pp-blink 2.8s steps(1,end) infinite;}
+  .pp-drum{transform-box:fill-box;transform-origin:center;animation:pp-spin 2s linear infinite;}
+  .pp-ink1{transform-box:fill-box;transform-origin:center;animation:pp-spin-r 1.3s linear infinite;}
+  .pp-ink2{transform-box:fill-box;transform-origin:center;animation:pp-spin 1.3s linear infinite;}
+  .pp-ink3{transform-box:fill-box;transform-origin:center;animation:pp-spin-r 1.3s linear infinite;}
+  .pp-paper{animation:pp-slide 2.2s linear infinite;}
+  .pp-led{transform-box:fill-box;animation:pp-blink 2s steps(1,end) infinite;}
 
-  @keyframes pp-feed{
-    0%   {transform:translateY(32px);}
-    60%  {transform:translateY(-28px);}
-    85%  {transform:translateY(-28px);}
-    100% {transform:translateY(32px);}
+  @keyframes pp-spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  @keyframes pp-spin-r{from{transform:rotate(0deg);}to{transform:rotate(-360deg);}}
+  @keyframes pp-slide{
+    0%  {transform:translateX(90px);opacity:0;}
+    8%  {opacity:1;}
+    88% {opacity:1;}
+    100%{transform:translateX(-180px);opacity:0;}
   }
-  @keyframes pp-line{
-    0%,30%{opacity:0;}
-    40%,85%{opacity:1;}
-    86%,100%{opacity:0;}
-  }
-  @keyframes pp-blink{
-    0%,49%{fill:#4ade80;}
-    50%,100%{fill:#c8a55a;}
-  }
+  @keyframes pp-blink{0%,49%{fill:#4ade80;}50%,100%{fill:#c8202f;}}
 
   /* Scroll reveal */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
@@ -280,24 +270,65 @@
 </header>
 
 <section class="hero">
-  <!-- pixel-art printer animation -->
+  <!-- printing press animation -->
   <div class="printer-wrap">
-    <svg class="pixel-printer" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-      <g class="pp-paper">
-        <rect x="40" y="4" width="40" height="46" fill="#f0ead6"/>
-        <rect class="pp-line1" x="45" y="10" width="30" height="4" fill="#4a5568" opacity="0"/>
-        <rect class="pp-line2" x="45" y="18" width="22" height="4" fill="#4a5568" opacity="0"/>
-        <rect class="pp-line3" x="45" y="26" width="28" height="4" fill="#4a5568" opacity="0"/>
-      </g>
-      <rect x="36" y="42" width="48" height="6" fill="#0f2540"/>
-      <rect x="24" y="48" width="72" height="36" fill="#0f2540"/>
-      <rect x="36" y="48" width="48" height="6" fill="#071628"/>
-      <rect x="28" y="66" width="64" height="12" fill="#0a1e36"/>
-      <rect x="34" y="70" width="8" height="4" fill="#4ade80" class="pp-led"/>
-      <rect x="80" y="70" width="8" height="4" fill="#c8202f"/>
-      <rect x="28" y="84" width="14" height="6" fill="#0a1e36"/>
-      <rect x="78" y="84" width="14" height="6" fill="#0a1e36"/>
-      <rect x="24" y="48" width="72" height="2" fill="rgba(255,255,255,.10)"/>
+    <svg class="pixel-printer" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+      <!-- paper strip sliding through -->
+      <rect class="pp-paper" x="50" y="62" width="110" height="8" fill="#f0ead6"/>
+      <!-- printed lines on paper (move with paper) -->
+      <rect class="pp-paper" x="58" y="64" width="22" height="2" fill="#2b2f36" opacity=".55"/>
+      <rect class="pp-paper" x="58" y="68" width="34" height="2" fill="#2b2f36" opacity=".40"/>
+
+      <!-- frame: left column -->
+      <rect x="48" y="46" width="12" height="64" fill="#0f2540"/>
+      <!-- frame: right column -->
+      <rect x="180" y="46" width="12" height="64" fill="#0f2540"/>
+      <!-- top beam -->
+      <rect x="48" y="46" width="144" height="10" fill="#0f2540"/>
+      <!-- base -->
+      <rect x="42" y="100" width="156" height="10" fill="#0f2540"/>
+      <!-- feet -->
+      <rect x="42" y="110" width="20" height="6" fill="#071628"/>
+      <rect x="178" y="110" width="20" height="6" fill="#071628"/>
+
+      <!-- inner side panels -->
+      <rect x="60" y="56" width="10" height="44" fill="#162d4a"/>
+      <rect x="170" y="56" width="10" height="44" fill="#162d4a"/>
+
+      <!-- main impression drum -->
+      <circle cx="120" cy="66" r="26" fill="#1a3a60" class="pp-drum"/>
+      <!-- drum spoke lines (rotate with drum) -->
+      <rect class="pp-drum" x="119" y="40" width="2" height="52" fill="rgba(255,255,255,.07)"/>
+      <rect class="pp-drum" x="94" y="65" width="52" height="2" fill="rgba(255,255,255,.07)"/>
+      <!-- drum center bolt -->
+      <circle cx="120" cy="66" r="5" fill="#0f2540"/>
+      <circle cx="120" cy="66" r="2" fill="#071628"/>
+
+      <!-- ink roller 1 (left) -->
+      <circle cx="82" cy="36" r="10" fill="#c8202f" class="pp-ink1"/>
+      <circle cx="82" cy="36" r="3" fill="#8b0000" class="pp-ink1"/>
+      <!-- ink roller 2 (centre) -->
+      <circle cx="120" cy="28" r="10" fill="#c8202f" class="pp-ink2"/>
+      <circle cx="120" cy="28" r="3" fill="#8b0000" class="pp-ink2"/>
+      <!-- ink roller 3 (right) -->
+      <circle cx="158" cy="36" r="10" fill="#c8202f" class="pp-ink3"/>
+      <circle cx="158" cy="36" r="3" fill="#8b0000" class="pp-ink3"/>
+
+      <!-- axle connectors between rollers and beam -->
+      <rect x="80" y="44" width="4" height="8" fill="#071628"/>
+      <rect x="118" y="36" width="4" height="12" fill="#071628"/>
+      <rect x="156" y="44" width="4" height="8" fill="#071628"/>
+
+      <!-- control panel on left column -->
+      <rect x="50" y="76" width="7" height="4" fill="#4ade80" class="pp-led"/>
+      <rect x="50" y="84" width="7" height="4" fill="#071628"/>
+
+      <!-- paper feed tray (right side) -->
+      <rect x="190" y="60" width="32" height="4" fill="#e4dbbe"/>
+      <rect x="190" y="64" width="36" height="3" fill="#cfc6aa"/>
+
+      <!-- output guide (left side) -->
+      <rect x="10" y="60" width="42" height="3" fill="#ddd4bb"/>
     </svg>
   </div>
 
