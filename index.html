@@ -747,13 +747,24 @@
         setProgress(100);
 
         // Send email notification to shop owner
+        var notesVal = document.getElementById('u-notes').value.trim() || '—';
+
+        // 1) Notify the shop owner
         emailjs.send('service_84430n4', 'template_awswyz8', {
           to_email:       'hanin@hanin.co.il',
           customer_name:  name,
           customer_phone: phone,
           customer_email: email,
-          notes:          document.getElementById('u-notes').value.trim() || '—',
+          notes:          notesVal,
           file_url:       fileUrl
+        });
+
+        // 2) Send confirmation to the customer
+        emailjs.send('service_84430n4', 'template_y0syexe', {
+          customer_email: email,
+          customer_name:  name,
+          customer_phone: phone,
+          notes:          notesVal
         });
 
         setStatus('success', '✓ הקובץ הועלה בהצלחה! נחזור אל ' + name + ' בהקדם לאישור ותיאום.');
