@@ -52,10 +52,10 @@ header{position:sticky;top:0;z-index:30;}
 .logo{font-size:1.5rem;font-weight:800;letter-spacing:.5px;color:var(--navy);text-decoration:none;}
 .logo b{color:var(--red);}
 nav.main-nav{display:flex;gap:28px;}
-nav.main-nav a{color:var(--text);text-decoration:none;font-weight:600;font-size:.98rem;transition:color .2s;}
+nav.main-nav a{color:var(--text);text-decoration:none;font-weight:600;font-size:.92rem;transition:color .2s;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.15;}
+nav.main-nav a .nav-ico{font-size:1.3rem;line-height:1;}
 nav.main-nav a:hover{color:var(--red);}
 nav.main-nav a.active{color:var(--red);}
-nav.main-nav a.active::after{content:"";display:block;height:2px;background:var(--red);border-radius:2px;margin-top:3px;}
 .nav-cta{
   background:var(--red);color:#fff;padding:11px 24px;border-radius:6px;
   font-weight:700;text-decoration:none;font-size:.92rem;white-space:nowrap;
