@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>[TEST] העלאת קבצים | דפוס חנין</title>
+<meta name="description" content="העלו קובץ להדפסה ישירות לדפוס חנין — מאובטח, מהיר ופשוט.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" onload="emailjs.init('P5sPc5m16piio5QlZ')"></script>
+</head>
+<body>
+
+<div class="bg-fx"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="topbar">
+  <span>📍 תל אביב, אחד העם 8</span>
+  <span>📱 054-4944844</span>
+  <span>🕒 9:00–14:00</span>
+</div>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo">דפוס <b>חנין</b></a>
+    <nav class="main-nav">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="services.html">שירותים</a>
+      <a href="upload.html" class="active">העלאת קבצים</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+    <a href="contact.html" class="nav-cta">קבלו הצעת מחיר</a>
+  </div>
+</header>
+
+<section id="upload">
+  <div class="section-head reveal">
+    <span class="tag">שירות עצמי</span>
+    <h2>העלאת קבצים להדפסה</h2>
+    <p>העלו את הקובץ שלכם ישירות — נחזור אליכם לאישור ותיאום תוך יום עסקים</p>
+  </div>
+  <div class="upload-wrap">
+    <div class="upload-card glass reveal">
+
+      <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+        <input type="file" id="fileInput"
+          accept=".pdf,.jpg,.jpeg,.png,.tiff,.tif,.ai,.eps,.docx,application/pdf,image/jpeg,image/png,image/tiff,application/postscript,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;">
+        <div class="drop-icon">📂</div>
+        <h3>גררו קובץ לכאן</h3>
+        <p>PDF, JPG, PNG, TIFF, AI, EPS, DOCX — עד 50MB</p>
+        <div class="drop-types">
+          <span class="drop-tag">PDF</span><span class="drop-tag">JPG</span>
+          <span class="drop-tag">PNG</span><span class="drop-tag">TIFF</span>
+          <span class="drop-tag">AI</span><span class="drop-tag">EPS</span>
+          <span class="drop-tag">DOCX</span>
+        </div>
+        <button class="browse-btn" onclick="event.stopPropagation();document.getElementById('fileInput').click();">בחרו קובץ מהמכשיר</button>
+      </div>
+
+      <div class="file-preview" id="filePreview">
+        <span class="file-icon" id="fileIcon">📄</span>
+        <div class="file-info">
+          <div class="file-name" id="fileName"></div>
+          <div class="file-size" id="fileSize"></div>
+        </div>
+        <span class="file-remove" id="fileRemove" title="הסר קובץ">✕</span>
+      </div>
+
+      <div class="upload-fields">
+        <div class="upload-field">
+          <label for="u-name">שם מלא *</label>
+          <input type="text" id="u-name" placeholder="ישראל ישראלי">
+        </div>
+        <div class="upload-field">
+          <label for="u-phone">טלפון *</label>
+          <input type="tel" id="u-phone" placeholder="050-0000000">
+        </div>
+        <div class="upload-field upload-field-full">
+          <label for="u-email">אימייל *</label>
+          <input type="email" id="u-email" placeholder="israel@example.com">
+        </div>
+        <div class="upload-field upload-field-full">
+          <label for="u-notes">הערות (כמות, גודל, צדדים...)</label>
+          <textarea id="u-notes" placeholder="לדוגמה: 500 עותקים, A4, צד אחד"></textarea>
+        </div>
+      </div>
+
+      <div class="upload-terms">
+        <input type="checkbox" id="u-terms">
+        <label for="u-terms">קראתי ואני מסכים/ה ל<a href="terms.html" target="_blank">תנאי השימוש ומדיניות הפרטיות</a></label>
+      </div>
+
+      <button class="btn btn-primary upload-submit" id="uploadBtn" onclick="submitUpload()">שלחו לדפוס ←</button>
+
+      <div class="upload-progress" id="uploadProgress"><div class="upload-progress-bar" id="progressBar"></div></div>
+      <div class="upload-status" id="uploadStatus"></div>
+
+      <div class="security-row">
+        <span class="sec-badge"><span class="dot"></span> בדיקת תוכן אוטומטית</span>
+        <span class="sec-badge"><span class="dot"></span> קבצים מוצפנים בהעברה</span>
+        <span class="sec-badge"><span class="dot"></span> מחיקה אוטומטית לאחר הדפסה</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="logo" style="color:var(--navy);">דפוס <b style="color:var(--red);">חנין</b></a><br>
+  © דפוס חנין — כל הזכויות שמורות · <a href="terms.html" style="color:var(--muted);text-decoration:none;font-weight:600;">תנאי שימוש ופרטיות</a>
+</footer>
+
+<a href="https://wa.me/972544944844?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%20%D7%94%D7%93%D7%A4%D7%A1%D7%94%20%F0%9F%96%A8%EF%B8%8F" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.122 1.528 5.855L0 24l6.335-1.505A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.371l-.36-.214-3.722.884.933-3.622-.235-.372A9.818 9.818 0 1112 21.818z"/>
+  </svg>
+</a>
+
+<script src="assets/main.js"></script>
+<script src="assets/upload.js"></script>
+</body>
+</html>
