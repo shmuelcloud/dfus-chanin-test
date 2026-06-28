@@ -73,6 +73,24 @@
       </div>
 
       <div class="upload-fields">
+        <div class="upload-field upload-field-full svc-field">
+          <label>סוג השירות</label>
+          <button type="button" class="svc-select" id="svcSelect" onclick="toggleSvc(event)">
+            <span id="svcLabel">בחרו סוג שירות...</span><span class="chev">▾</span>
+          </button>
+          <div class="svc-menu" id="svcMenu">
+            <button type="button" onclick="pickSvc('כרטיסי ביקור')">כרטיסי ביקור</button>
+            <button type="button" onclick="pickSvc('פנקסים')">פנקסים</button>
+            <button type="button" onclick="pickSvc('פליירים')">פליירים</button>
+            <button type="button" onclick="pickSvc('גלויות')">גלויות</button>
+            <button type="button" onclick="pickSvc('חותמות גומי')">חותמות גומי</button>
+            <button type="button" onclick="pickSvc('מדבקות')">מדבקות</button>
+            <button type="button" onclick="pickSvc('חוברות')">חוברות</button>
+            <button type="button" onclick="pickSvc('ספרים')">ספרים</button>
+            <button type="button" onclick="pickSvc('מעטפות')">מעטפות</button>
+            <button type="button" onclick="pickSvc('אחר')">אחר</button>
+          </div>
+        </div>
         <div class="upload-field">
           <label for="u-name">שם מלא *</label>
           <input type="text" id="u-name" placeholder="ישראל ישראלי">

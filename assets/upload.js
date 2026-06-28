@@ -18,6 +18,26 @@
   var EXT_ICONS = {pdf:'📕',jpg:'🖼️',jpeg:'🖼️',png:'🖼️',tiff:'🖼️',tif:'🖼️',ai:'🎨',eps:'🎨',docx:'📝'};
 
   var selectedFile = null;
+  var selectedService = '';
+
+  // Service-type dropdown
+  window.toggleSvc = function(e){
+    if(e) e.stopPropagation();
+    document.getElementById('svcSelect').classList.toggle('open');
+    document.getElementById('svcMenu').classList.toggle('open');
+  };
+  window.pickSvc = function(name){
+    selectedService = name;
+    document.getElementById('svcLabel').textContent = name;
+    document.getElementById('svcSelect').classList.remove('open');
+    document.getElementById('svcMenu').classList.remove('open');
+  };
+  document.addEventListener('click', function(e){
+    var sel = document.getElementById('svcSelect'), menu = document.getElementById('svcMenu');
+    if(sel && menu && !sel.contains(e.target) && !menu.contains(e.target)){
+      sel.classList.remove('open'); menu.classList.remove('open');
+    }
+  });
 
   function matchBytes(arr, sig){ for(var i=0;i<sig.length;i++) if(arr[i]!==sig[i]) return false; return true; }
   function fmtSize(b){ return b>1048576 ? (b/1048576).toFixed(1)+' MB' : Math.round(b/1024)+' KB'; }
@@ -104,14 +124,19 @@
         var res=JSON.parse(xhr.responseText);
         var fileUrl=res.secure_url;
         setProgress(100);
-        var notesVal=document.getElementById('u-notes').value.trim()||'—';
+        var rawNotes=document.getElementById('u-notes').value.trim();
+        var notesVal=(selectedService ? 'סוג שירות: '+selectedService : '') +
+                     (selectedService && rawNotes ? ' | ' : '') +
+                     rawNotes;
+        if(!notesVal) notesVal='—';
 
         emailjs.send('service_84430n4','template_awswyz8',{
           to_email:'hanin@hanin.co.il', customer_name:name, customer_phone:phone,
-          customer_email:email, notes:notesVal, file_url:fileUrl
+          customer_email:email, service_type:selectedService||'—', notes:notesVal, file_url:fileUrl
         });
         emailjs.send('service_84430n4','template_y0syexe',{
-          customer_email:email, customer_name:name, customer_phone:phone, notes:notesVal
+          customer_email:email, customer_name:name, customer_phone:phone,
+          service_type:selectedService||'—', notes:notesVal
         });
 
         setStatus('success','✓ הקובץ הועלה בהצלחה! נחזור אל '+name+' בהקדם לאישור ותיאום.');
