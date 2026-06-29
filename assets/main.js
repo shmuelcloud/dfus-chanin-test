@@ -5,19 +5,26 @@ function toggleMenu(){
   if(!btn || !nav) return;
   var open = nav.classList.toggle('open');
   btn.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
 }
-// Close menu on nav link click
 document.addEventListener('DOMContentLoaded', function(){
-  var links = document.querySelectorAll('.mobile-nav a');
-  links.forEach(function(a){
+  // Close on link click
+  document.querySelectorAll('.mobile-nav a').forEach(function(a){
     a.addEventListener('click', function(){
       var nav = document.getElementById('mobileNav');
       var btn = document.getElementById('hamburger');
       if(nav) nav.classList.remove('open');
       if(btn) btn.classList.remove('open');
-      document.body.style.overflow = '';
     });
+  });
+  // Close when clicking outside
+  document.addEventListener('click', function(e){
+    var nav = document.getElementById('mobileNav');
+    var btn = document.getElementById('hamburger');
+    if(!nav || !nav.classList.contains('open')) return;
+    if(!nav.contains(e.target) && e.target !== btn && !btn.contains(e.target)){
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+    }
   });
 });
 
