@@ -187,7 +187,7 @@ section{max-width:1200px;margin:0 auto;padding:90px 24px;scroll-margin-top:100px
 .stat-box .num{font-size:2.1rem;font-weight:900;color:var(--navy);line-height:1.2;}
 .stat-box .lbl{color:var(--muted);font-size:.9rem;margin-top:6px;font-weight:300;}
 
-.storefront-wrap{max-width:900px;margin:56px auto 0;text-align:center;}
+.storefront-wrap{width:100%;margin:56px 0 0;text-align:center;}
 .storefront-img{
   width:100%;height:auto;border-radius:20px;display:block;
   box-shadow:0 12px 36px rgba(15,37,64,.18);border:1px solid var(--border);
