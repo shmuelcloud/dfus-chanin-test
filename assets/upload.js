@@ -105,6 +105,8 @@
     if(!name||!phone||!email) return setStatus('error','אנא מלאו שם, טלפון ואימייל לפני שליחה');
     if(!document.getElementById('u-terms').checked) return setStatus('error','אנא אשרו את תנאי השימוש לפני שליחה');
     if(!selectedFile) return setStatus('error','אנא בחרו קובץ להעלאה');
+    var captchaToken = (typeof grecaptcha!=='undefined') ? grecaptcha.getResponse() : '';
+    if(!captchaToken) return setStatus('error','אנא אשרו שאינכם רובוט (סמנו את התיבה למעלה)');
 
     var btn=document.getElementById('uploadBtn');
     btn.disabled=true;
@@ -132,13 +134,18 @@
 
         emailjs.send('service_84430n4','template_awswyz8',{
           to_email:'hanin@hanin.co.il', customer_name:name, customer_phone:phone,
-          customer_email:email, service_type:selectedService||'—', notes:notesVal, file_url:fileUrl
-        });
-        emailjs.send('service_84430n4','template_y0syexe',{
-          customer_email:email, customer_name:name, customer_phone:phone,
-          service_type:selectedService||'—', notes:notesVal
+          customer_email:email, service_type:selectedService||'—', notes:notesVal, file_url:fileUrl,
+          'g-recaptcha-response':captchaToken
+        }).then(function(){
+          return emailjs.send('service_84430n4','template_y0syexe',{
+            customer_email:email, customer_name:name, customer_phone:phone,
+            service_type:selectedService||'—', notes:notesVal
+          });
+        }).catch(function(err){
+          console.error('EmailJS send failed', err);
         });
 
+        if(typeof grecaptcha!=='undefined') grecaptcha.reset();
         setStatus('success','✓ הקובץ הועלה בהצלחה! נחזור אל '+name+' בהקדם לאישור ותיאום.');
         setTimeout(function(){ setProgress(null); }, 1500);
       } else {

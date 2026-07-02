@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 <link rel="stylesheet" href="assets/style.css?v=20260630">
 <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" onload="emailjs.init('P5sPc5m16piio5QlZ')"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -126,6 +127,8 @@
         <input type="checkbox" id="u-terms">
         <label for="u-terms">קראתי ואני מסכים/ה ל<a href="terms.html" target="_blank">תנאי השימוש ומדיניות הפרטיות</a></label>
       </div>
+
+      <div class="g-recaptcha" data-sitekey="6LfeyUAtAAAAAP8tciJy64-sTcmxH3wL-mbML4Lj" style="margin:0 0 18px;"></div>
 
       <button class="btn btn-primary upload-submit" id="uploadBtn" onclick="submitUpload()">שלחו לדפוס ←</button>
 
